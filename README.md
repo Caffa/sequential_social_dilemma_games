@@ -1,3 +1,9 @@
+# This Fork
+Modifies →  Work in mac env instead of linux
+(sed) →  gsed in patch file
+use python 3.8 as 3.9 causes conflict in dependencies (cannot install ray 0.8.5)
+
+
 [![Build Status](https://travis-ci.com/eugenevinitsky/sequential_social_dilemma_games.svg?branch=master)](https://travis-ci.com/eugenevinitsky/sequential_social_dilemma_games)
 
 # Sequential Social Dilemma Games
@@ -23,14 +29,14 @@ The above plot shows the empirical Schelling diagrams for both Cleanup (A) and H
 ```
 git clone -b master https://github.com/eugenevinitsky/sequential_social_dilemma_games
 cd sequential_social_dilemma_games
-python3 -m venv venv # Create a Python virtual environment
+virtualenv venv --python=python3.8  # Create a Python virtual environment
 . venv/bin/activate
 pip3 install --upgrade pip setuptools wheel
 python3 setup.py develop
 pip3 install -r requirements.txt
 # Patch ray due to https://github.com/ray-project/ray/issues/7946
 # And https://github.com/ray-project/ray/pull/8491
-. ray_uint8_patch.sh 
+bash ray_uint8_patch_mac.sh 
 cd run_scripts
 ```
 
